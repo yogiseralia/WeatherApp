@@ -8,6 +8,7 @@ import io.github.yogiseralia.weatherapp.data.db.AppDatabase
 /**
  * Please refer to designs -
  * https://www.behance.net/gallery/90366995/Weather-App
+ * raised issue regarding datastore - https://issuetracker.google.com/185039067
  */
 class WeatherApp : MultiDexApplication() {
 
