@@ -1,4 +1,4 @@
-# Weather App
+# Weather App ![Build Status](https://travis-ci.com/yogiseralia/WeatherApp.svg?branch=main)
 
 Weather App is a hobby project to explore latest libraries in android ecosystem.
 
