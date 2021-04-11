@@ -26,3 +26,4 @@ android:
     - 'android-sdk-preview-license-52d11cd2'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
+    - echo yes | sdkmanager "build-tools;30.0.1"
