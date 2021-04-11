@@ -1,13 +1,12 @@
 # Weather App
 
 Weather App is a hobby project to explore latest libraries in android ecosystem.
-//Weather App is available on the Google Play Store.
 
-//<p align="left">
-//<a href="https://play.google.com/store/apps/details?id=fr.gaulupeau.apps.InThePoche">
-//    <img alt="Get it on Google Play"
-//        height="80"
-//        src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
+## Screenshots
+
+[<img src="/readme/CurrentWeatherScreen.png"
+width="200"
+    hspace="10" vspace="10">](/readme/CurrentWeatherScreen.png)
 
 
 ## About
@@ -34,13 +33,6 @@ Can have a look on implementations of:
 - Room DB
 - Proto DataStore
 - Retrofit
-
-## Screenshots
-
-[<img src="/readme/CurrentWeatherScreen.png" align="left"
-width="200"
-    hspace="10" vspace="10">](/readme/CurrentWeatherScreen.png)
-
 
 ## Contributing
 
