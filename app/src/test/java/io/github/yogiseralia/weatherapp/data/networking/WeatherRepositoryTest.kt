@@ -18,44 +18,44 @@ import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
-@ExperimentalCoroutinesApi
-@RunWith(MockitoJUnitRunner::class)
+//@ExperimentalCoroutinesApi
+//@RunWith(MockitoJUnitRunner::class)
 class WeatherRepositoryTest : TestCase() {
-
-    @Rule
-    @JvmField
-    val rule = InstantTaskExecutorRule()
-
-    private lateinit var weatherRepository: WeatherRepository
-
-    @Mock
-    private lateinit var apiServiceMock: OpenWeatherAPIService
-
-    @Mock
-    private lateinit var weatherDaoMock: WeatherDao
-
-    @Mock
-    private lateinit var mapperMock: WeatherAPIToDBMapper
+//
+//    @Rule
+//    @JvmField
+//    val rule = InstantTaskExecutorRule()
+//
+//    private lateinit var weatherRepository: WeatherRepository
+//
+//    @Mock
+//    private lateinit var apiServiceMock: OpenWeatherAPIService
+//
+//    @Mock
+//    private lateinit var weatherDaoMock: WeatherDao
+//
+//    @Mock
+//    private lateinit var mapperMock: WeatherAPIToDBMapper
 
 //    private val latLng = Latlng(anyDouble(), anyDouble())
 
 
-    @Before
-    public override fun setUp() {
-        super.setUp()
-        val apiServiceMock: OpenWeatherAPIService = mock<OpenWeatherAPIService>()
-        val weatherDaoMock: WeatherDao = mock<WeatherDao>()
-        val mapperMock: WeatherAPIToDBMapper = mock<WeatherAPIToDBMapper>()
+//    @Before
+//    public override fun setUp() {
+//        super.setUp()
+//        val apiServiceMock: OpenWeatherAPIService = mock<OpenWeatherAPIService>()
+//        val weatherDaoMock: WeatherDao = mock<WeatherDao>()
+//        val mapperMock: WeatherAPIToDBMapper = mock<WeatherAPIToDBMapper>()
+//
+//        weatherRepository = WeatherRepository(
+//            apiServiceMock,
+//            weatherDaoMock,
+//            mapperMock
+//        )
+//    }
 
-        weatherRepository = WeatherRepository(
-            apiServiceMock,
-            weatherDaoMock,
-            mapperMock
-        )
-    }
-
-    @After
-    public override fun tearDown() {
-    }
+//    @After
+//    public override fun tearDown() {
+//    }
 
 }
