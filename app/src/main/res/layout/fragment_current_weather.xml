@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".currentweather.screens.CurrentWeatherFragment">
+
+    <TextView
+        android:id="@+id/txtvw_city_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@raw/roboto_light"
+        android:gravity="end"
+        android:text=""
+        android:textAllCaps="true"
+        android:textSize="@dimen/font_size_city_name"
+        app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
+        app:layout_constraintEnd_toEndOf="@id/right_guideline"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/left_guideline"
+        app:layout_constraintTop_toTopOf="@id/top_guideline"
+        app:layout_constraintVertical_bias="0.001" />
+
+    <TextView
+        android:id="@+id/txtvw_state_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@raw/roboto_light"
+        android:gravity="end"
+        android:text=""
+        android:textColor="@color/grey"
+        android:textSize="@dimen/font_size_state_name"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/right_guideline"
+        app:layout_constraintStart_toStartOf="@id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/txtvw_city_name" />
+
+    <ImageView
+        android:id="@+id/imgvw_weather"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:layout_constraintStart_toStartOf="@id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/txtvw_city_name"
+        app:tint="@color/grey" />
+
+    <TextView
+        android:id="@+id/txtvw_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@raw/roboto_thin"
+        android:text=""
+        android:textSize="@dimen/font_size_temperature"
+        app:layout_constraintBottom_toTopOf="@id/txtvw_weather_type"
+        app:layout_constraintEnd_toStartOf="@id/imgvw_degree" />
+
+    <ImageView
+        android:id="@+id/imgvw_degree"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/shape_degree_circle"
+        android:contentDescription="@string/degree_sign"
+        app:layout_constraintEnd_toEndOf="@id/right_guideline"
+        app:layout_constraintTop_toTopOf="@id/txtvw_temperature" />
+
+    <TextView
+        android:id="@+id/txtvw_weather_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@raw/roboto_light"
+        android:text=""
+        android:textSize="@dimen/font_size_weather_type"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/txtvw_humidity"
+        app:layout_constraintEnd_toEndOf="@id/right_guideline" />
+
+    <TextView
+        android:id="@+id/txtvw_humidity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@raw/roboto_light"
+        android:text=""
+        android:textSize="@dimen/font_size_weather_type"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/bed_guideline"
+        app:layout_constraintEnd_toEndOf="@id/right_guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/default_width_guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/default_width_guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/default_width_guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/default_width_guideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bed_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="100dp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/day_night_transition" />
+</androidx.constraintlayout.widget.ConstraintLayout>

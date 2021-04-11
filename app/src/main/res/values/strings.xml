@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">WeatherApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="degree_sign">degree sign</string>
+    <string name="weather">Weather</string>
+    <string name="places">Places</string>
+    <string name="preference">Preference</string>
+    <string name="news">News</string>
 </resources>

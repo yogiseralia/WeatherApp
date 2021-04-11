@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_width_guideline">30dp</dimen>
+    <dimen name="font_size_city_name">50sp</dimen>
+    <dimen name="font_size_state_name">45sp</dimen>
+    <dimen name="font_size_temperature">180sp</dimen>
+    <dimen name="font_size_weather_type">20sp</dimen>
+</resources>
