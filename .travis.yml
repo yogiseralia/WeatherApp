@@ -20,10 +20,15 @@ android:
 
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
-    - sys-img-x64-android-29
+    - sys-img-x64-android-28
     #- sys-img-armeabi-v7a-android-17
   licenses:
     - 'android-sdk-preview-license-52d11cd2'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
-    - echo yes | sdkmanager "build-tools;30.0.1"
+before_script:
+  # Prepare pre-accepted licenses to not be prompted at installation
+  - mkdir -p "$ANDROID_HOME/licenses"
+  - cp ./google-licenses/* "$ANDROID_HOME/licenses/"
+script:
+  - ./gradlew build check
