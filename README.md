@@ -8,6 +8,9 @@ Weather App is a hobby project to explore latest libraries in android ecosystem.
 width="200"
     hspace="10" vspace="10">](/readme/CurrentWeatherScreen.png)
 
+[<img src="/readme/PreferencesScreen.png"
+width="200"
+    hspace="10" vspace="10">](/readme/PreferencesScreen.png)
 
 ## About
 
