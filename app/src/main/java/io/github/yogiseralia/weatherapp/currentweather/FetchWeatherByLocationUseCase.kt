@@ -5,7 +5,7 @@ import io.github.yogiseralia.weatherapp.data.networking.WeatherRepository
 import io.github.yogiseralia.weatherapp.utils.Outcome
 
 class FetchWeatherByLocationUseCase(private val mWeatherRepository: WeatherRepository) {
-    private val TAG = "FetchWeatherByLocationU"
+    private val TAG = "FetchWeatherByLocationUseCase"
 
     suspend fun fetchWeatherByLocation(latlng: Latlng): Outcome<CurrentWeather?> {
         return try {

@@ -3,14 +3,14 @@ syntax = "proto3";
 option java_package = "io.github.yogiseralia.weatherapp";
 option java_multiple_files = true;
 
-message Preferences {
+message AppSettings {
   TempUnit tempUnit = 1;
   WindSpeedUnit windSpeed = 2;
   bool is24HrTime = 3;
-  string appVersion = 4;
-  string authors = 5;
-  string weatherSource = 6;
-  string newsSource = 7;
+//  string appVersion = 4;
+//  string authors = 5;
+//  string weatherSource = 6;
+//  string newsSource = 7;
   // upto 15 elements declared are faster and takes 1 byte to encode.
 
   enum WindSpeedUnit {

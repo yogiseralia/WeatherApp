@@ -1,6 +1,5 @@
 package io.github.yogiseralia.weatherapp.data.networking
 
-import android.os.SystemClock
 import io.github.yogiseralia.weatherapp.currentweather.Latlng
 import io.github.yogiseralia.weatherapp.data.db.WeatherDao
 import io.github.yogiseralia.weatherapp.data.db.WeatherEntity
@@ -15,31 +14,29 @@ class WeatherRepository(
 
     override suspend fun getWeather(latlng: Latlng): WeatherEntity? {
         var weatherEntity: WeatherEntity? = mDBService.getWeatherEntity()
-        if (weatherEntity == null) {
-            weatherEntity =
-                weatherAPIToDBMapper.mapWeatherToDB(
-                    mAPIService.weatherByCoordinatesOneCall(
-                        latlng.lat,
-                        latlng.lng
-                    )
-                )
+        if (isDataCached(weatherEntity)) {
+            weatherEntity = weatherAPIToDBMapper.mapWeatherToDB(callAPI(latlng))
             mDBService.saveWeather(weatherEntity)
-        } else if (getDifferenceInMins(weatherEntity.DBCurrent.dt) > 10) {
-            weatherEntity =
-                weatherAPIToDBMapper.mapWeatherToDB(
-                    mAPIService.weatherByCoordinatesOneCall(
-                        latlng.lat,
-                        latlng.lng
-                    )
-                )
+        } else if (isDataOldNow(weatherEntity)) {
+            weatherEntity = weatherAPIToDBMapper.mapWeatherToDB(callAPI(latlng))
             mDBService.updateWeather(weatherEntity)
-        } else weatherEntity = mDBService.getWeatherEntity()
+        }
         return weatherEntity
     }
 
-    fun getDifferenceInMins(timeStamp: Int): Int {
+    private fun isDataCached(weatherEntity: WeatherEntity?) = weatherEntity == null
+
+    private suspend fun callAPI(latlng: Latlng) = mAPIService.weatherByCoordinatesOneCall(
+        latlng.lat,
+        latlng.lng
+    )
+
+    private fun isDataOldNow(weatherEntity: WeatherEntity?) =
+        getDifferenceInMins(weatherEntity?.DBCurrent?.dt ?: 0) > 10
+
+    private fun getDifferenceInMins(timeStamp: Int): Int {
         val currCal = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
-        val cal : Calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
+        val cal: Calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
         cal.timeInMillis = timeStamp.toLong().times(1000)
         return currCal.get(Calendar.MINUTE) - cal.get(Calendar.MINUTE)
     }

@@ -7,4 +7,20 @@
     <string name="places">Places</string>
     <string name="preference">Preference</string>
     <string name="news">News</string>
+    <string name="placeholder_your_name">YOUR NAME</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="plaeholder_your_email">YOUR EMAIL</string>
+    <string name="settings">SETTINGS</string>
+    <string name="temperature_unit">Temperature Unit</string>
+    <string name="windspeed_unit">Wind Speed Unit</string>
+    <string name="_24_hour_time">24-Hour Time</string>
+    <string name="about">ABOUT</string>
+    <string name="deg_c">°C</string>
+    <string name="deg_f">°F</string>
+    <string name="mph">MPH</string>
+    <string name="kph">KPH</string>
+    <string name="version">Version :</string>
+    <string name="authors">Authors :</string>
+    <string name="weather_source">Weather Source :</string>
+    <string name="news_source">News Source :</string>
 </resources>
