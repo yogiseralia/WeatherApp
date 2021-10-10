@@ -15,8 +15,8 @@
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/app_navigation"
-        tools:layout_editor_absoluteX="269dp"
-        tools:layout_editor_absoluteY="274dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

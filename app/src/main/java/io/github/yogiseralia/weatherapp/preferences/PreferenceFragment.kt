@@ -14,7 +14,6 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -74,10 +73,11 @@ class PreferenceFragment : Fragment() {
         val authorsString =
             StringBuilder(txtvw_authors.text).append("Yogesh Seralia").toString()
         val spAuthorsString = SpannableString(authorsString)
-        spAuthorsString.setSpan(UnderlineSpan(), 10, authorsString.length, 0)
+        val spanStart = 9
+        spAuthorsString.setSpan(UnderlineSpan(), spanStart, authorsString.length, 0)
         spAuthorsString.setSpan(
             ForegroundColorSpan(R.color.colorAccent),
-            10,
+            spanStart,
             authorsString.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
@@ -97,10 +97,11 @@ class PreferenceFragment : Fragment() {
         val weatherSourceString =
             StringBuilder(txtvw_weather_source.text).append("Open Weather Maps").toString()
         val spWeatherSourceString = SpannableString(weatherSourceString)
-        spWeatherSourceString.setSpan(UnderlineSpan(), 17, weatherSourceString.length, 0)
+        val spanStart = 16
+        spWeatherSourceString.setSpan(UnderlineSpan(), spanStart, weatherSourceString.length, 0)
         spWeatherSourceString.setSpan(
             ForegroundColorSpan(R.color.colorAccent),
-            17,
+            spanStart,
             weatherSourceString.length,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )

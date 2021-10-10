@@ -10,6 +10,6 @@ data class Outcome<out T>(
         fun <T> error(data: T?, message: String): Outcome<T?> =
             Outcome(status = Status.ERROR, data = data, message = message)
 
-        fun <T> loading(data: T?): Outcome<T?> = Outcome(Status.LOADING, data, "")
+        fun <T> loading(): Outcome<T?> = Outcome(Status.LOADING, null, "")
     }
 }

@@ -5,5 +5,6 @@ data class CurrentWeather(
     val status: String,
     val humidity: Int,
     val iconId: Int,
-    val iconName: String
+    val iconName: String,
+    val weeklyWeather : List<WeekdayWeather>
 )

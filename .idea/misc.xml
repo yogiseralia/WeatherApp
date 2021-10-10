@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/dev/projects/WeatherApp/app/src/main/res/layout/fragment_current_weather.xml" value="0.17844202898550723" />
+        <entry key="..\:/dev/projects/WeatherApp/app/src/main/res/layout/fragment_current_weather_new.xml" value="0.25" />
+        <entry key="..\:/dev/projects/WeatherApp/app/src/main/res/layout/list_item_weekday_weather_forecart.xml" value="0.46770833333333334" />
+        <entry key="..\:/dev/projects/WeatherApp/app/src/main/res/layout/weekday_weather_forecart.xml" value="0.26975683890577506" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

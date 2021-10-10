@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "843055335978",
+    "firebase_url": "https://api-project-843055335978.firebaseio.com",
+    "project_id": "api-project-843055335978",
+    "storage_bucket": "api-project-843055335978.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843055335978:android:4807b72e335401753c5153",
+        "android_client_info": {
+          "package_name": "io.github.yogiseralia.weatherapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843055335978-r86tdd96uauldbevikha98n8i07cbhc7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.yogiseralia.weatherapp",
+            "certificate_hash": "fc5d434961b92acc0ee9c6ab2027f6d27704a880"
+          }
+        },
+        {
+          "client_id": "843055335978-dlpqk8kjps7ame03cdrodtsk7murldf4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOjr8x_lgiCkHmN-HZNK23MjwLdEbu8ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843055335978-dlpqk8kjps7ame03cdrodtsk7murldf4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

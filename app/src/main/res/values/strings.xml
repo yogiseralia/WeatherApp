@@ -23,4 +23,6 @@
     <string name="authors">Authors :</string>
     <string name="weather_source">Weather Source :</string>
     <string name="news_source">News Source :</string>
+    <string name="daily_summary">DAILY SUMMARY</string>
+    <string name="temperature_chart">Temperature Chart</string>
 </resources>

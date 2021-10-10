@@ -40,6 +40,7 @@
         android:id="@+id/imgvw_weather"
         android:layout_width="match_parent"
         android:layout_height="350dp"
+        android:contentDescription="@null"
         app:layout_constraintStart_toStartOf="@id/left_guideline"
         app:layout_constraintTop_toBottomOf="@id/txtvw_city_name"
         app:tint="@color/grey" />
@@ -59,6 +60,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginTop="60dp"
+        android:visibility="gone"
         android:background="@drawable/shape_degree_circle"
         android:contentDescription="@string/degree_sign"
         app:layout_constraintEnd_toEndOf="@id/right_guideline"

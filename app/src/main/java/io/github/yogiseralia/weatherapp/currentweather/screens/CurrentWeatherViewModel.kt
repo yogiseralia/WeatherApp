@@ -11,12 +11,8 @@ class CurrentWeatherViewModel(private val fetchWeatherByLocationUseCase: FetchWe
     ViewModel() {
 
     fun getWeather(lat: Double, lng: Double) = liveData(Dispatchers.IO) {
-        emit(Outcome.loading(data = null))
-        emit(
-            fetchWeatherByLocationUseCase.fetchWeatherByLocation(
-                Latlng(lat, lng)
-            )
-        )
+        emit(Outcome.loading())
+        emit(fetchWeatherByLocationUseCase.fetchWeatherByLocation(Latlng(lat, lng)))
     }
 
 }
