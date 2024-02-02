@@ -13,34 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-#     Caching the proto buf lib
-    - name: Cache protobuf library
-      id: cache-protobuf
-      uses: actions/cache@v1
-      with:
-        path: protobuf
-        key: ${{ runner.os }}-protobuf
-#     If cache not found then download the repo and build
-    - name: Build protobuf library
-      if: steps.cache-protobuf.outputs.cache-hit != 'true'
-      run: |
-        git clone https://github.com/protocolbuffers/protobuf.git
-        cd protobuf
-        git submodule update --init --recursive
-        ./autogen.sh
-        ./autogen.sh
-        ./configure
-        make
-        make check
-#     Install the built lib.
-    - name: Install protobuf library
-      run: |
-        cd protobuf
-        sudo make install
-        sudo ldconfig
-    - name: make
-      run: make
-
     - name: set up JDK 17
       uses: actions/setup-java@v3
       with:
