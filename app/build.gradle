@@ -1,15 +1,30 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    id "kotlin-android-extensions"
+    id "kotlin-parcelize"
     id "kotlin-kapt"
     id "org.sonarqube"
-    id "com.google.protobuf" version "0.8.12"
+    id "com.google.protobuf" version "0.9.1"
 }
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.11.0"
+        artifact = "com.google.protobuf:protoc:3.13.0"
+    }
+    protoc {
+        if (project.hasProperty('protoc_platform')) {
+            artifact = "com.google.protobuf:protoc:3.13.0:${protoc_platform}"
+        } else {
+            artifact = "com.google.protobuf:protoc:3.13.0"
+        }
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.1.2:osx-x86_64'
+        }
+        javalite {
+            artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0:osx-x86_64"
+        }
     }
     //Generates the java Protobuf-lite code for the Protobufs in this project
     generateProtoTasks {
@@ -24,14 +39,11 @@ protobuf {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.1"
-    kotlinOptions.useIR = true
-
+    compileSdk 34
     defaultConfig {
         applicationId "io.github.yogiseralia.weatherapp"
-        minSdkVersion 17
-        targetSdkVersion 30
+        minSdkVersion 19
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -39,8 +51,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     buildTypes {
@@ -51,7 +63,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     sonarqube {
@@ -65,6 +77,10 @@ android {
             property "sonar.password", "root"
         }
     }
+    namespace 'io.github.yogiseralia.weatherapp'
+    buildFeatures {
+        buildConfig true
+    }
 }
 
 dependencies {
@@ -76,23 +92,23 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // appcompat libs
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 
     //multidex
 
     implementation "androidx.multidex:multidex:2.0.1"
 
     // constraint layout
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // material design
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.google.android.material:material:1.11.0'
 
     // lifecycle handling and helpers
-    implementation 'androidx.lifecycle:lifecycle-common:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-common:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
 
     // for animations
     implementation 'com.airbnb.android:lottie:3.6.1'
@@ -104,8 +120,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // jetpack-navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.6'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.6'
 
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -113,17 +129,17 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
 
     // room-db
-    implementation "androidx.room:room-runtime:2.2.6"
-    kapt "androidx.room:room-compiler:2.2.6"
-    implementation "androidx.room:room-ktx:2.2.6"
+    implementation "androidx.room:room-runtime:2.6.1"
+    annotationProcessor "androidx.room:room-compiler:2.6.1"
+    kapt 'androidx.room:room-compiler:2.6.1'
 
     // kotlin-coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
 
     // data-store
-    implementation "androidx.datastore:datastore:1.0.0-beta01"
-    implementation  "com.google.protobuf:protobuf-javalite:3.11.0"
+    implementation "androidx.datastore:datastore:1.0.0"
+    implementation "com.google.protobuf:protobuf-javalite:3.18.0"
 
     // charts
     implementation 'com.diogobernardino:williamchart:3.10.1'
@@ -136,9 +152,9 @@ dependencies {
     // testing
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:2.19.0'
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2"
-    testImplementation 'androidx.arch.core:core-testing:2.1.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1"
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
 }

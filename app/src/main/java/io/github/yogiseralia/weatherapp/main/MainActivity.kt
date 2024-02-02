@@ -3,7 +3,7 @@ package io.github.yogiseralia.weatherapp.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -15,16 +15,12 @@ import io.github.yogiseralia.weatherapp.data.db.AppDatabase
 
 class MainActivity : AppCompatActivity() {
 
-    private val navController: NavController
-        get() {
-            return findNavController(R.id.nav_host_fragment)
-        }
+    private val navController: NavController?
+        get() = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)?.findNavController()
 
     private val bottomNavigationView: BottomNavigationView
-        get() {
-            return findViewById(R.id.bottom_navigation)
-        }
-    private val TAG = "MainActivity"
+        get() = findViewById(R.id.bottom_navigation)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -46,10 +42,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupBottomNav() {
         bottomNavigationView.itemIconTintList = null
-        bottomNavigationView.setupWithNavController(navController)
+        navController?.let { bottomNavigationView.setupWithNavController(it) }
     }
 
     private fun setupViewModel() {
-
+        /*no-op*/
     }
 }

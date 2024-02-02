@@ -13,10 +13,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
 import com.airbnb.lottie.LottieAnimationView
 import io.github.yogiseralia.weatherapp.R
 import io.github.yogiseralia.weatherapp.WeatherApp
@@ -40,7 +37,7 @@ class CurrentWeatherFragment : Fragment() {
                     WeatherAPIToDBMapper()
                 )
             )
-        ).get(CurrentWeatherViewModel::class.java)
+        )[CurrentWeatherViewModel::class.java]
     }
     private lateinit var txtvw_weather_type: TextView
     private lateinit var txtvw_temperature: TextView
@@ -56,28 +53,28 @@ class CurrentWeatherFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val layout_view: View =
+        val layoutView: View =
             inflater.inflate(R.layout.fragment_current_weather, container, false)
-        setupUI(layout_view)
+        setupUI(layoutView)
         getWeatherData()
-        return layout_view
+        return layoutView
     }
 
-    private fun setupUI(layout_view: View) {
-        txtvw_weather_type = layout_view.findViewById(R.id.txtvw_weather_type)
-        txtvw_temperature = layout_view.findViewById(R.id.txtvw_temperature)
-        txtvw_humidity = layout_view.findViewById(R.id.txtvw_humidity)
-        txtvw_city_name = layout_view.findViewById(R.id.txtvw_city_name)
-        txtvw_state_name = layout_view.findViewById(R.id.txtvw_state_name)
-        imgvw_weather = layout_view.findViewById(R.id.imgvw_weather)
-        imgvw_degree = layout_view.findViewById(R.id.imgvw_degree)
-        lottie_loading = layout_view.findViewById(R.id.lottie_loading)
+    private fun setupUI(layoutView: View) {
+        txtvw_weather_type = layoutView.findViewById(R.id.txtvw_weather_type)
+        txtvw_temperature = layoutView.findViewById(R.id.txtvw_temperature)
+        txtvw_humidity = layoutView.findViewById(R.id.txtvw_humidity)
+        txtvw_city_name = layoutView.findViewById(R.id.txtvw_city_name)
+        txtvw_state_name = layoutView.findViewById(R.id.txtvw_state_name)
+        imgvw_weather = layoutView.findViewById(R.id.imgvw_weather)
+        imgvw_degree = layoutView.findViewById(R.id.imgvw_degree)
+        lottie_loading = layoutView.findViewById(R.id.lottie_loading)
     }
 
     private fun getWeatherData() {
         val weather = currentWeatherViewModel.getWeather(27.5530, 76.6346)
         this.activity?.let {
-            weather.observe(it, {
+            weather.observe(it) {
                 currentWeather = it.data
                 when (it.status) {
                     is Status.SUCCESS -> {
@@ -86,18 +83,20 @@ class CurrentWeatherFragment : Fragment() {
                         imgvw_degree.visibility = VISIBLE
                         lottie_loading.visibility = GONE
                     }
+
                     is Status.LOADING -> {
                         imgvw_degree.visibility = GONE
                         lottie_loading.visibility = VISIBLE
                         Log.d(TAG, "loading...")
                     }
+
                     is Status.ERROR -> {
                         imgvw_degree.visibility = GONE
                         lottie_loading.visibility = GONE
                         Log.d(TAG, "error ${it.message}")
                     }
                 }
-            })
+            }
         }
     }
 
@@ -113,15 +112,15 @@ class CurrentWeatherFragment : Fragment() {
         }
 
         getGeoCodedAddress()?.let {
-            txtvw_city_name.text = it.get(0).locality
-            txtvw_state_name.text = it.get(0).adminArea
+            txtvw_city_name.text = it[0].locality
+            txtvw_state_name.text = it[0].adminArea
         }
     }
 
     private fun getGeoCodedAddress(): MutableList<Address>? {
         var fromLocation: MutableList<Address>? = null
         try {
-            fromLocation = Geocoder(activity).getFromLocation(27.5530, 76.6346, 1)
+            fromLocation = context?.let { Geocoder(it).getFromLocation(27.5530, 76.6346, 1) }
         } catch (e: Exception) {
             Log.d(TAG, "geocoding failed")
         }
