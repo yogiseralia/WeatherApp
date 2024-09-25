@@ -1,13 +1,28 @@
 package io.github.yogiseralia.weatherapp.main
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import io.github.yogiseralia.weatherapp.currentweather.FetchWeatherByLocationUseCase
-import io.github.yogiseralia.weatherapp.currentweather.Latlng
-import io.github.yogiseralia.weatherapp.utils.Outcome
-import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewmodel.CreationExtras
 
-class MainViewModel() :
-    ViewModel() {
+class MainViewModel() : ViewModel() {
 
+    companion object {
+
+        val Factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(
+                modelClass: Class<T>,
+                extras: CreationExtras
+            ): T {
+                // Get the Application object from extras
+                val application = checkNotNull(extras[APPLICATION_KEY])
+                // Create a SavedStateHandle for this ViewModel from extras
+                val savedStateHandle = extras.createSavedStateHandle()
+
+                return MainViewModel() as T
+            }
+        }
+    }
 }

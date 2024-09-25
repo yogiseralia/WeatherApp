@@ -25,4 +25,5 @@
     <string name="news_source">News Source :</string>
     <string name="daily_summary">DAILY SUMMARY</string>
     <string name="temperature_chart">Temperature Chart</string>
+    <string name="city_list_title">Saved Locations</string>
 </resources>

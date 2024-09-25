@@ -37,6 +37,10 @@ Can have a look on implementations of:
 - Proto DataStore
 - Retrofit
 
+## Inspiration
+
+
+
 ## Contributing
 
 Weather App app is a free and open source project developed by volunteers. Any contributions are welcome. Here are a few ways you can help:

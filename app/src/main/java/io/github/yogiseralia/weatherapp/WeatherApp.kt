@@ -11,4 +11,20 @@ import io.github.yogiseralia.weatherapp.data.db.AppDatabase
  */
 class WeatherApp : MultiDexApplication() {
     lateinit var appDatabase: AppDatabase
+
+    override fun onCreate() {
+        super.onCreate()
+        setupDB()
+    }
+
+    private fun setupDB() {
+        if (BuildConfig.DEBUG) {
+            appDatabase =
+                Room.inMemoryDatabaseBuilder(applicationContext, AppDatabase::class.java).build()
+        } else {
+            appDatabase =
+                Room.databaseBuilder(applicationContext, AppDatabase::class.java, "weather-db")
+                    .build()
+        }
+    }
 }
