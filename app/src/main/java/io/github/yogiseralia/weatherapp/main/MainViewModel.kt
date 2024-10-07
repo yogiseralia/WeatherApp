@@ -5,8 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
+import io.github.yogiseralia.weatherapp.base.BaseViewModel
 
-class MainViewModel() : ViewModel() {
+class MainViewModel : BaseViewModel<MainUIState, MainUIEvent>() {
 
     companion object {
 
@@ -23,6 +24,12 @@ class MainViewModel() : ViewModel() {
 
                 return MainViewModel() as T
             }
+        }
+    }
+
+    override fun onUIEvent(uiEvent: MainUIEvent) {
+        when (uiEvent) {
+            MainUIEvent.FetchCurrentWeather -> sendUIState(MainUIState.CurrentWeatherFetched("Data"))
         }
     }
 }
