@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     WeatherNavGraph(
                         navController = navController,
                         onBackPressedDispatcher = onBackPressedDispatcher,
-                        startDestination = Screen.CityWeather(),
+                        startDestination = Screen.CityWeather("Paris"),
                         onFinish = { finish() }
                     )
                 }
